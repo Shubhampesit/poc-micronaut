@@ -1,10 +1,11 @@
 package valorx.optimization.poc.poc.entity;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Type;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Table(name = "business_users")
@@ -19,11 +20,11 @@ public class BusinessUsers {
     public String salesforceUserId;
 
     @Column(name = "shorted_username")
-    public String shortedUserName;
+    public String shortedUsername;
 
-    @Column(name = "preferences")
-//    @Type(value = "jsonb")
-    public String preferences;
+    @Column(name = "preferences", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    public Map<String, Object> preferences;
 
     @Column(name = "license_id")
     public long licenseId;

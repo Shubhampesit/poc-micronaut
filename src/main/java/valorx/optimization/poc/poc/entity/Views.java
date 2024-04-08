@@ -1,11 +1,16 @@
 package valorx.optimization.poc.poc.entity;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Table(name = "views")
+@Data
 public class Views {
 
     @Id
@@ -22,17 +27,17 @@ public class Views {
     @Column(name = "description")
     public String description;
 
-    @Column(name = "query")
-//    @Type(value = "jsonb")
-    public String query;
+    @Column(name = "query", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    public Map<String, Object> query;
 
-    @Column(name = "fields")
-//    @Type(value = "jsonb")
-    public String fields;
+    @Column(name = "fields", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    public Map<String, Object> fields;
 
-    @Column(name = "display_option")
-//    @Type(value = "jsonb")
-    public String displayOption;
+    @Column(name = "display_option", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    public Map<String, Object> displayOption;
 
     @Column(name = "environment_id")
     public long environmentId;
@@ -46,9 +51,9 @@ public class Views {
     @Column(name = "modified_ts")
     public LocalDateTime modifiedTimestamp;
 
-    @Column(name = "report_metadata")
-//    @Type(value = "jsonb")
-    public String reportMetadata;
+    @Column(name = "report_metadata", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    public Map<String, Object> reportMetadata;
 
     @Column(name = "report_id")
     public String reportId;
