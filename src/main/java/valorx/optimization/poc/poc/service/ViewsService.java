@@ -3,10 +3,10 @@ package valorx.optimization.poc.poc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import valorx.optimization.poc.poc.dto.ViewDetail;
+import valorx.optimization.poc.poc.entity.Views;
 import valorx.optimization.poc.poc.repository.ViewsRepository;
 
-import java.awt.print.Pageable;
+import java.util.List;
 
 @Service
 public class ViewsService {
@@ -14,8 +14,8 @@ public class ViewsService {
     @Autowired
     private ViewsRepository viewsRepository;
 
-    public ViewDetail fetchViewDetails(int environmentId, int ownerId, int viewId) {
+    public List<Views> fetchViewDetails(int environmentId, int ownerId, int viewId) {
         PageRequest pageRequest = PageRequest.of(0, 2);
-        return viewsRepository.getViewDetails(environmentId, ownerId, viewId, pageRequest).getContent().getFirst();
+        return viewsRepository.findAll(pageRequest).getContent();
     }
 }

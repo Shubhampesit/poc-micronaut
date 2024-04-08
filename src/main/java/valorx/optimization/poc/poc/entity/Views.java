@@ -42,8 +42,9 @@ public class Views {
     @Column(name = "environment_id")
     public long environmentId;
 
-    @Column(name = "owner_id")
-    public long ownerId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "owner_id")
+    public BusinessUsers ownerId;
 
     @Column(name = "insert_ts")
     public LocalDateTime insertTimestamp;

@@ -1,9 +1,12 @@
 package valorx.optimization.poc.poc.dto;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Builder
 @AllArgsConstructor
@@ -11,11 +14,13 @@ public class ViewDetail {
 
     public String description;
 
-    public String displayOption;
+    @Type(JsonType.class)
+    public Map<String, Object> displayOption;
 
     public long environmentId;
 
-    public String fields;
+    @Type(JsonType.class)
+    public Map<String, Object> fields;
 
     public LocalDateTime insertTimestamp;
 
@@ -29,11 +34,13 @@ public class ViewDetail {
 
     public long ownerId;
 
-    public String query;
+    @Type(JsonType.class)
+    public Map<String, Object> query;
 
     public String reportId;
 
-    public String reportMetaData;
+    @Type(JsonType.class)
+    public Map<String, Object> reportMetaData;
 
 //    ----------------------------------------
 
@@ -53,7 +60,8 @@ public class ViewDetail {
 
     public LocalDateTime buModifiedTimestamp;
 
-    public String preferences;
+    @Type(JsonType.class)
+    public Map<String, Object> preferences;
 
     public String salesforceUserId;
 

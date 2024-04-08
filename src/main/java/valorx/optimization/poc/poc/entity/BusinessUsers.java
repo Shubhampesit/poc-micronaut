@@ -16,6 +16,9 @@ public class BusinessUsers {
     @Column(name = "id")
     public long id;
 
+   @OneToOne(mappedBy = "ownerId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   public Views views;
+
     @Column(name = "salesforce_user_id")
     public String salesforceUserId;
 

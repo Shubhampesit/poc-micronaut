@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import valorx.optimization.poc.poc.dto.ViewDetail;
+import valorx.optimization.poc.poc.entity.Views;
 import valorx.optimization.poc.poc.service.ViewsService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/valorx")
@@ -17,13 +20,13 @@ public class RelatedListViewController {
     private ViewsService viewsService;
 
     @GetMapping("view/owned/detail")
-    public ResponseEntity<ViewDetail> getViewDetail(@RequestParam(value = "view_id", required = false) int viewId) {
+    public ResponseEntity<List<Views>> getViewDetail(@RequestParam(value = "view_id", required = false) int viewId) {
 
         //environmentId, viewId, ownerId
         int environmentId = 0;
         int ownerId = 0;
 
-        ViewDetail viewDetail = viewsService.fetchViewDetails(environmentId, ownerId, viewId);
+        List<Views> viewDetail = viewsService.fetchViewDetails(environmentId, ownerId, viewId);
 
         return ResponseEntity.ok(viewDetail);
     }
